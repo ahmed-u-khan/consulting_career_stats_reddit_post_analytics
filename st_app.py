@@ -1,6 +1,6 @@
 import streamlit as st
-from st_aggrid import AgGrid, GridOptionsBuilder
-from st_aggrid.shared import GridUpdateMode
+# from st_aggrid import AgGrid, GridOptionsBuilder
+# from st_aggrid.shared import GridUpdateMode
 import pandas as pd
 import numpy as np
 import re
@@ -18,31 +18,31 @@ st.set_page_config(
 
 
 
-def aggrid_interactive_table(df: pd.DataFrame):
-    """Creates an st-aggrid interactive table based on a dataframe.
+# def aggrid_interactive_table(df: pd.DataFrame):
+#     """Creates an st-aggrid interactive table based on a dataframe.
 
-    Args:
-        df (pd.DataFrame]): Source dataframe
+#     Args:
+#         df (pd.DataFrame]): Source dataframe
 
-    Returns:
-        dict: The selected row
-    """
-    options = GridOptionsBuilder.from_dataframe(
-        df, enableRowGroup=True, enableValue=True, enablePivot=True
-    )
+#     Returns:
+#         dict: The selected row
+#     """
+#     options = GridOptionsBuilder.from_dataframe(
+#         df, enableRowGroup=True, enableValue=True, enablePivot=True
+#     )
 
-    options.configure_side_bar()
+#     options.configure_side_bar()
 
-    options.configure_selection("single")
-    selection = AgGrid(
-        df,
-        enable_enterprise_modules=True,
-        gridOptions=options.build(),
-        update_mode=GridUpdateMode.MODEL_CHANGED,
-        allow_unsafe_jscode=True,
-    )
+#     options.configure_selection("single")
+#     selection = AgGrid(
+#         df,
+#         enable_enterprise_modules=True,
+#         gridOptions=options.build(),
+#         update_mode=GridUpdateMode.MODEL_CHANGED,
+#         allow_unsafe_jscode=True,
+#     )
 
-    return selection
+#     return selection
 
 df_comments = pd.read_csv (r'comments.csv')
 
@@ -193,10 +193,9 @@ with col1:
 		, "Base_Compensation_CAD": "MEDIAN_Base_Compensation_CAD"
 		}
 	)
-    # st.write(avg_bar_chart_df)
-    # st.write(cnt_bar_chart_df)
-    resultant_df = resultant_df.reset_index(level=0)
-    selection = aggrid_interactive_table(df=resultant_df)
+    # resultant_df = resultant_df.reset_index(level=0)
+    # selection = aggrid_interactive_table(df=resultant_df)
+    st.dataframe(resultant_df)
 
 
 
@@ -246,10 +245,9 @@ with col1:
 		, "Base_Compensation_CAD": "MEDIAN_Base_Compensation_CAD"
 		}
 	)
-    # st.write(avg_bar_chart_df)
-    # st.write(cnt_bar_chart_df)
-    resultant_df = resultant_df.reset_index(level=0)
-    selection = aggrid_interactive_table(df=resultant_df)
+    # resultant_df = resultant_df.reset_index(level=0)
+    # selection = aggrid_interactive_table(df=resultant_df)
+    st.dataframe(resultant_df)
     
 
 with col2:
@@ -297,10 +295,9 @@ with col1:
 		, "Base_Compensation_CAD": "MEDIAN_Base_Compensation_CAD"
 		}
 	)
-    # st.write(avg_bar_chart_df)
-    # st.write(cnt_bar_chart_df)
-    resultant_df = resultant_df.reset_index(level=0)
-    selection = aggrid_interactive_table(df=resultant_df)
+    # resultant_df = resultant_df.reset_index(level=0)
+    # selection = aggrid_interactive_table(df=resultant_df)
+    st.dataframe(resultant_df)
     
 
 with col2:
@@ -349,10 +346,9 @@ with col1:
         , "Base_Compensation_CAD": "MEDIAN_Base_Compensation_CAD"
         }
     )
-    # st.write(avg_bar_chart_df)
-    # st.write(cnt_bar_chart_df)
-    resultant_df = resultant_df.reset_index(level=0)
-    selection = aggrid_interactive_table(df=resultant_df)
+    # resultant_df = resultant_df.reset_index(level=0)
+    # selection = aggrid_interactive_table(df=resultant_df)
+    st.dataframe(resultant_df)
     
 
 with col2:
@@ -373,8 +369,8 @@ st.write("")
 st.write("")
 st.write("")
 st.caption("cleaned and normalized data")
-# st.dataframe(df_comments_filtered_and_cleaned)
-selection = aggrid_interactive_table(df=df_comments_filtered_and_cleaned)
+st.dataframe(df_comments_filtered_and_cleaned)
+# selection = aggrid_interactive_table(df=df_comments_filtered_and_cleaned)
 
 
 st.write("")
@@ -385,7 +381,7 @@ st.dataframe(df_comments_filtered)
 
 st.write("")
 st.caption("Raw Data || Datasource: [link](https://www.reddit.com/r/consulting/comments/wzsuz2/faang_top_tech_mbb_big4_canadian_salary_thread/)")
-selection = aggrid_interactive_table(df=df_comments)
-
+# selection = aggrid_interactive_table(df=df_comments)
+st.dataframe(df_comments)
 
  
