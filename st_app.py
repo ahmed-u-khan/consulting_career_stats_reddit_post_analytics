@@ -6,10 +6,6 @@ import numpy as np
 import re
 import altair as alt
 
-import streamlit_analytics
-
-streamlit_analytics.start_tracking()
-
 
 st.set_page_config(
 	page_title="stats: r/Consulting salary thread"
@@ -389,5 +385,3 @@ st.caption("Raw Data || Datasource: [link](https://www.reddit.com/r/consulting/c
 st.dataframe(df_comments)
 
  
-
-streamlit_analytics.stop_tracking()
